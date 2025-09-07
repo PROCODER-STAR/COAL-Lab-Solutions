@@ -1,0 +1,32 @@
+INCLUDE Irvine32.inc
+
+.data
+a DWORD 10h
+b DWORD 12h
+c3 DWORD 20h
+d DWORD 25h
+Message BYTE "Ebx = ", 0
+
+.code
+main PROC
+
+    mov eax, a
+    add eax, b
+
+    mov ebx, a
+    sub ebx, b
+
+    sub eax, ebx
+    add eax, c3
+    add eax, d
+
+    mov ebx, eax
+
+    mov edx, OFFSET Message
+    call WriteString
+    mov eax, ebx
+    call WriteHex      
+
+    exit
+main ENDP
+END main
